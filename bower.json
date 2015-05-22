@@ -2,7 +2,7 @@
   "name": "parallax-container",
   "version": "0.0.0",
   "authors": [
-    "Anonymous <winstonhowes@gmail.com>"
+    "Winston Howes <winstonhowes@gmail.com>"
   ],
   "description": "A container for parallax groups and layers.",
   "keywords": [
