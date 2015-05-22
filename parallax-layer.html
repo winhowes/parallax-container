@@ -27,6 +27,7 @@ Example:
       right: 0;
       bottom: 0;
       left: 0;
+      -webkit-transform: translateZ(0) scale(1);
       transform: translateZ(0) scale(1);
     }
   </style>
@@ -71,6 +72,7 @@ Example:
       var perspective = node.perspective;
       layer = this.layer > 0? 1-Math.exp(-this.layer/node.foregroundScale): this.layer;
       this.style.transform = "translateZ(" + (layer * scale) + "px) scale(" + (1 + (layer * -scale) / perspective) + ")";
+      this.style["-webkit-transform"] = this.style.transform;
     }
   });
 </script>
