@@ -1,0 +1,72 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <!-- Step 1: import the element to test -->
+    <link rel="import" href="../parallax-container.html">
+  </head>
+  <body>
+
+    <!-- You can use the document as a place to set up your fixtures. -->
+    <parallax-container>
+      <parallax-group>
+        <parallax-layer>Base Layer</parallax-layer>
+      </parallax-group>
+    </parallax-container>
+
+    <script>
+      var parallaxContainer = document.querySelector('parallax-container');
+
+      suite('<parallax-container>', function() {
+
+        test('defines the "perspective" property', function() {
+          assert.equal(parallaxContainer.perspective, 300);
+        });
+        
+        test('defines the "foregroundScale" property', function() {
+          assert.equal(parallaxContainer.foregroundScale, 5);
+        });
+        
+        test('defines the "scale" property', function() {
+          assert.equal(parallaxContainer.scale, 300);
+        });
+
+      });
+      
+      var parallaxGroup = document.querySelector('parallax-group');
+
+      suite('<parallax-group>', function() {
+
+        test('defines the "z" property', function() {
+          assert.equal(parallaxGroup.z, 0);
+        });
+
+      });
+      
+      var parallaxLayer = document.querySelector('parallax-layer');
+
+      suite('<parallax-layer>', function() {
+
+        test('defines the "layer" property', function() {
+          assert.equal(parallaxLayer.layer, 0);
+        });
+
+      });
+    </script>
+
+  </body>
+</html>

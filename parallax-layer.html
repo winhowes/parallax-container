@@ -1,0 +1,76 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+A parallax layer. Put content in here to have it placed in a certain plane.
+
+Example:
+
+    <parallax-layer layer="-1"></parallax-layer>
+
+-->
+<dom-module id="parallax-layer" attributes="layer">
+
+  <style>
+    :host {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translateZ(0) scale(1);
+    }
+  </style>
+  
+  <template>
+    <content></content>
+  </template>
+
+</dom-module>
+
+<script>
+  Polymer({
+    is: "parallax-layer",
+    properties: {
+      /**
+       * `layer` determines whether the layer should be in the background
+       * or foreground. Negative numbers are for background, positive for
+       * foreground. Defaults to 0.
+      */
+      layer: {
+        type: Number,
+        notify: true,
+        value: 0
+      }
+    },
+    listeners: {
+      "layer-changed": "layerChanged"
+    },
+    ready: function() {
+      this.layerChanged()
+    },
+    /**
+     * `layerChanged` is called to update the css of the layer whenever the
+     * `layer` property is changed.
+    */
+    layerChanged: function(){
+      var node = this;
+      while(node.tagName.toLowerCase() != "parallax-container" && node.parentNode){
+        node = node.parentNode;
+      }
+      var scale = node.scale;
+      var perspective = node.perspective;
+      layer = this.layer > 0? 1-Math.exp(-this.layer/node.foregroundScale): this.layer;
+      this.style.transform = "translateZ(" + (layer * scale) + "px) scale(" + (1 + (layer * -scale) / perspective) + ")";
+    }
+  });
+</script>

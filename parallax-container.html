@@ -1,0 +1,93 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+A container for parallax groups and layers.
+
+Example:
+
+    <parallax-container></parallax-container>
+
+-->
+<link rel="import" href="parallax-group.html">
+<link rel="import" href="parallax-layer.html">
+
+<dom-module id="parallax-container" attributes="perspective">
+  
+  <style>
+    :host {
+      display: block;
+      perspective: 300px;
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  </style>
+  
+  <template>
+    <content></content>
+  </template>
+
+</dom-module>
+
+<script>
+  Polymer({
+    is: "parallax-container",
+    properties: {
+      /**
+       * `perspective` corresponds to the perspective css property,
+       * of the container and scales the parallax-layers accordingly.
+      */
+      perspective: {
+        type: Number,
+        notify: true,
+        value: 300
+      },
+      /**
+       * `foregroundScale` determines the depth of foreground parallax layers.
+       * Lower numbers create more depth.
+       */
+      foregroundScale: {
+        type: Number,
+        notify: true,
+        value: 5
+      },
+      /**
+       * `scale` is a multiplier for several css.
+       */
+      scale: {
+        type: Number,
+        notify: true,
+        value: 300
+      }
+    },
+    listeners: {
+      "perspective-changed": "perspectiveChanged",
+      "foregroundScale-changed": "perspectiveChanged",
+      "scale-changed": "perspectiveChanged"
+    },
+    ready: function() {
+      this.perspectiveChanged();
+    },
+    /**
+     * `perspectiveChanged` is called when the `perspective` property is changed.
+    */
+    perspectiveChanged: function() {
+      this.style.perspective = this.perspective+"px";
+      var layers = this.querySelectorAll("parallax-layer");
+      for(var i=0; i<layers.length; i++) {
+        if(layers[i].layer) {
+          layers[i].layerChanged();
+        }
+      }
+    }
+  });
+</script>

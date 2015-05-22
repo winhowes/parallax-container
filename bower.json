@@ -1,0 +1,29 @@
+{
+  "name": "parallax-container",
+  "version": "0.0.0",
+  "authors": [
+    "Anonymous <winstonhowes@gmail.com>"
+  ],
+  "description": "A container for parallax groups and layers.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "parallax"
+  ],
+  "main": "parallax-container.html",
+  "license": "MIT",
+  "homepage": "https://github.com/winhowes/parallax-container/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "bower_components"
+  ],
+  "dependencies": {
+    "polymer": "~0.9.0"
+  },
+  "devDependencies": {
+    "iron-doc-viewer": "PolymerElements/iron-doc-viewer#^0.8.6",
+    "web-component-tester": "*"
+  }
+}

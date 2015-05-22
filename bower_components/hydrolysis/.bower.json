@@ -1,0 +1,20 @@
+{
+  "name": "hydrolysis",
+  "private": true,
+  "devDependencies": {
+    "polymer": "Polymer/polymer#0.8-preview",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.6.0",
+    "web-component-tester": "*"
+  },
+  "version": "1.4.0",
+  "homepage": "https://github.com/PolymerLabs/hydrolysis",
+  "_release": "1.4.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.4.0",
+    "commit": "a1dc63b204738a15bdfe6b98d10c84c50c76dfde"
+  },
+  "_source": "git://github.com/PolymerLabs/hydrolysis.git",
+  "_target": "^1.1.2",
+  "_originalSource": "PolymerLabs/hydrolysis"
+}
