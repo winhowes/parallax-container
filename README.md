@@ -12,7 +12,7 @@ can be applied.
 
 A parallax layer. Put content in here to have it placed in a certain plane.
 
-## Installation
+# Installation
 To install simply run:
 ```
 bower install parallax-container
