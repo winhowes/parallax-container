@@ -1,7 +1,7 @@
 # Introduction
 This repository is a collection of 3 new web-components that can be combined to easily create a parallax effect for content on any site.
 
-Check out the demo and docs here: http://winhowes.github.io/parallax-container/components/parallax-container/.
+Check out the demo and docs here: https://winhowes.github.io/parallax-container/components/parallax-container/.
 
 # Elements
  - **parallax-container**: a container for parallax groups and layers.
