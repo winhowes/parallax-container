@@ -11,5 +11,5 @@ Check out the demo and docs here: http://winhowes.github.io/parallax-container/c
 # Installation
 To install simply run:
 ```
-bower install parallax-container
+bower install --save parallax-container
 ```
