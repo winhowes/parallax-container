@@ -1,5 +1,5 @@
 # Introduction
-This repository is a collection of 3 new web-components that can be combined to easily create a parallax effect for content on any site.
+This repository is a collection of 3 new web-components that can be combined to easily create a parallax effect for content on any site. These elements are designed for use in Polymer 1.0
 
 Check out the demo and docs here: https://winhowes.github.io/parallax-container/components/parallax-container/.
 
