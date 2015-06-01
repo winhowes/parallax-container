@@ -68,12 +68,12 @@ Example:
       }
     },
     listeners: {
-      "perspective-changed": "perspectiveChanged",
-      "foregroundScale-changed": "perspectiveChanged",
-      "scale-changed": "perspectiveChanged"
+      "perspective-changed": "_perspectiveChanged",
+      "foregroundScale-changed": "_perspectiveChanged",
+      "scale-changed": "_perspectiveChanged"
     },
     ready: function() {
-      this.perspectiveChanged();
+      this._perspectiveChanged();
     },
     /**
      * `_perspectiveChanged` is called when the `perspective` property is changed.
@@ -84,7 +84,7 @@ Example:
       var layers = this.querySelectorAll("parallax-layer");
       for(var i=0; i<layers.length; i++) {
         if(layers[i].layer) {
-          layers[i].layerChanged();
+          layers[i]._layerChanged();
         }
       }
     }

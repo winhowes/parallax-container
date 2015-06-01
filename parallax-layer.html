@@ -51,10 +51,10 @@ Example:
       }
     },
     listeners: {
-      "layer-changed": "layerChanged"
+      "layer-changed": "_layerChanged"
     },
     ready: function() {
-      this.layerChanged()
+      this._layerChanged()
     },
     /**
      * `_layerChanged` is called to update the css of the layer whenever the
