@@ -18,7 +18,7 @@ Example:
 <link rel="import" href="parallax-layer.html">
 
 <dom-module id="parallax-container">
-  
+
   <style>
     :host {
       display: block;
@@ -29,7 +29,7 @@ Example:
       overflow-y: auto;
     }
   </style>
-  
+
   <template>
     <content></content>
   </template>
@@ -74,16 +74,23 @@ Example:
     },
     ready: function() {
       this._perspectiveChanged();
+      this.addEventListener('scroll', this._scroll);
+    },
+    /**
+     * `_scroll` prevents the element from scrolling horizontally - a fix to webkit issues.
+     */
+    _scroll: function(e) {
+      this.scrollLeft = 0;
     },
     /**
      * `_perspectiveChanged` is called when the `perspective` property is changed.
     */
     _perspectiveChanged: function() {
-      this.style.perspective = this.perspective+"px";
-      this.style["-webkit-perspective"] = this.perspective+"px";
+      this.style.perspective = this.perspective + "px";
+      this.style["-webkit-perspective"] = this.perspective + "px";
       var layers = this.querySelectorAll("parallax-layer");
-      for(var i=0; i<layers.length; i++) {
-        if(layers[i].layer) {
+      for (var i = 0; i < layers.length; i++) {
+        if (layers[i].layer) {
           layers[i]._layerChanged();
         }
       }
