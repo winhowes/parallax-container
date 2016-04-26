@@ -11,6 +11,7 @@ This code may only be used under the MIT license found at https://github.com/win
     <title>parallax-container Demo</title>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../parallax-container.html">
+    <link rel="import" href="custom-parallax-group/custom-parallax-group.html">
     <style>
       body {
         font-family: Arial;
@@ -48,6 +49,13 @@ This code may only be used under the MIT license found at https://github.com/win
     <p>An example of <code>&lt;parallax-container&gt;</code>:</p>
 
     <parallax-container>
+
+      <custom-parallax-group  z=3>
+        <div class="title">
+          Bubbles
+        </div>
+      </custom-parallax-group>
+
       
       <parallax-group id="group1" z=2>
         <parallax-layer>
@@ -100,6 +108,7 @@ This code may only be used under the MIT license found at https://github.com/win
           </div>
         </parallax-layer>
       </parallax-group>
+
       
     </parallax-container>
 
