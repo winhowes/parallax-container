@@ -39,6 +39,13 @@ Example:
 <script>
   Polymer({
     is: "parallax-container",
+
+    /**
+      * Fired when the `scrollTop` of the parallax-container changes.
+      *
+      * @event scroll-top-value-changed
+    */
+
     properties: {
       /**
        * `perspective` corresponds to the perspective css property,
@@ -65,6 +72,17 @@ Example:
         type: Number,
         notify: true,
         value: 300
+      },
+      /**
+       * `scrollTopValue` returns the `scrollTop` value of the `parallax-container` which is
+       * useful for combining this element with other elements such as `paper-scroll-header-panel`.
+       * The `scroll-top-value-changed` event is fired whenever this property is changed.
+      */
+      scrollTopValue: {
+        type: Number,
+        notify: true,
+        readOnly: true,
+        value: 0
       }
     },
     listeners: {
@@ -81,6 +99,7 @@ Example:
      */
     _scroll: function(e) {
       this.scrollLeft = 0;
+      this._setScrollTopValue(this.scrollTop);
     },
     /**
      * `_perspectiveChanged` is called when the `perspective` property is changed.
