@@ -62,7 +62,7 @@ Example:
     */
     _layerChanged: function(){
       var node = this;
-      while(node.tagName.toLowerCase() != "parallax-container" && node.parentNode){
+      while(node && node.tagName && node.tagName.toLowerCase() != "parallax-container" && node.parentNode){
         node = node.parentNode;
       }
       var scale = node.scale;
