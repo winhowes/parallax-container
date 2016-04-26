@@ -62,12 +62,12 @@ Example:
     */
     _layerChanged: function(){
       var node = this;
-      while(node && node.tagName && node.tagName.toLowerCase() != "parallax-container" && node.parentNode){
+      while(node && node.tagName && node.tagName.toLowerCase() !== "parallax-container" && node.parentNode){
         node = node.parentNode;
       }
       var scale = node.scale;
       var perspective = node.perspective;
-      layer = this.layer > 0? 1-Math.exp(-this.layer/node.foregroundScale): this.layer;
+      layer = this.layer > 0 ? 1 - Math.exp(-this.layer / node.foregroundScale): this.layer;
       this.style.transform = "translateZ(" + (layer * scale) + "px) scale(" + (1 + (layer * -scale) / perspective) + ")";
       this.style["-webkit-transform"] = this.style.transform;
     }
