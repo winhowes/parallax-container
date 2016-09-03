@@ -1,0 +1,107 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 Winston Howes. All rights reserved.
+This code may only be used under the MIT license found at https://github.com/winhowes/parallax-container/blob/master/LICENSE
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>parallax-container Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../parallax-container.html">
+    <style>
+      body {
+        font-family: Arial;
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+      }
+      parallax-container {
+        font-size: 200%;
+      }
+      .title {
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+      #group1 [layer="-1"]{
+        background: #1f8dd6;
+      }
+      #group2{
+        background: #1faad6;
+      }
+      #group3 [layer="-2"]{
+        background: #1f8dff;
+      }
+      #group4 {
+        background: #0077dd;
+      }
+    </style>
+  </head>
+  <body>
+
+    <p>An example of <code>&lt;parallax-container&gt;</code>:</p>
+
+    <parallax-container>
+
+      <parallax-group id="group1" z=2>
+        <parallax-layer>
+          <div class="title">
+            Base Layer
+          </div>
+        </parallax-layer>
+        <parallax-layer layer="-1">
+          <div class="title">
+            Background Layer
+          </div>
+        </parallax-layer>
+      </parallax-group>
+
+      <parallax-group id="group2" z=3>
+        <parallax-layer>
+          <div class="title">
+            Base Layer
+          </div>
+        </parallax-layer>
+        <parallax-layer layer=1>
+          <div class="title">
+            Foreground Layer
+          </div>
+        </parallax-layer>
+      </parallax-group>
+
+      <parallax-group id="group3" z=1>
+        <parallax-layer>
+          <div class="title">
+            Base Layer
+          </div>
+        </parallax-layer>
+        <parallax-layer layer=-2>
+          <div class="title">
+            Deep Background Layer
+          </div>
+        </parallax-layer>
+        <parallax-layer layer=-1>
+          <div class="title">
+            Background Layer
+          </div>
+        </parallax-layer>
+      </parallax-group>
+
+      <parallax-group id="group4" z=2>
+        <parallax-layer>
+          <div class="title">
+            Base Layer
+          </div>
+        </parallax-layer>
+      </parallax-group>
+
+    </parallax-container>
+
+  </body>
+</html>

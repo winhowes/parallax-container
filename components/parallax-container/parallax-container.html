@@ -1,0 +1,118 @@
+<!--
+@license
+Copyright (c) 2015 Winston Howes. All rights reserved.
+This code may only be used under the MIT license found at https://github.com/winhowes/parallax-container/blob/master/LICENSE
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+A container for parallax groups and layers.
+
+Example:
+
+    <parallax-container></parallax-container>
+
+@demo
+-->
+<link rel="import" href="parallax-group.html">
+<link rel="import" href="parallax-layer.html">
+
+<dom-module id="parallax-container">
+
+  <style>
+    :host {
+      display: block;
+      -webkit-perspective: 300px;
+      perspective: 300px;
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  </style>
+
+  <template>
+    <content></content>
+  </template>
+
+</dom-module>
+
+<script>
+  Polymer({
+    is: "parallax-container",
+
+    /**
+      * Fired when the `scrollTop` of the parallax-container changes.
+      *
+      * @event scroll-top-value-changed
+    */
+
+    properties: {
+      /**
+       * `perspective` corresponds to the perspective css property,
+       * of the container and scales the parallax-layers accordingly.
+      */
+      perspective: {
+        type: Number,
+        notify: true,
+        value: 300
+      },
+      /**
+       * `foregroundScale` determines the depth of foreground parallax layers.
+       * Lower numbers create more depth.
+       */
+      foregroundScale: {
+        type: Number,
+        notify: true,
+        value: 5
+      },
+      /**
+       * `scale` is a multiplier for several css properties.
+       */
+      scale: {
+        type: Number,
+        notify: true,
+        value: 300
+      },
+      /**
+       * `scrollTopValue` returns the `scrollTop` value of the `parallax-container` which is
+       * useful for combining this element with other elements such as `paper-scroll-header-panel`.
+       * The `scroll-top-value-changed` event is fired whenever this property is changed.
+      */
+      scrollTopValue: {
+        type: Number,
+        notify: true,
+        readOnly: true,
+        value: 0
+      }
+    },
+    listeners: {
+      "perspective-changed": "_perspectiveChanged",
+      "foregroundScale-changed": "_perspectiveChanged",
+      "scale-changed": "_perspectiveChanged"
+    },
+    ready: function() {
+      this._perspectiveChanged();
+      this.addEventListener('scroll', this._scroll);
+    },
+    /**
+     * `_scroll` prevents the element from scrolling horizontally - a fix to webkit issues.
+     */
+    _scroll: function() {
+      this.scrollLeft = 0;
+      this._setScrollTopValue(this.scrollTop);
+    },
+    /**
+     * `_perspectiveChanged` is called when the `perspective` property is changed.
+    */
+    _perspectiveChanged: function() {
+      this.style.perspective = this.perspective + "px";
+      this.style["-webkit-perspective"] = this.perspective + "px";
+      var layers = this.querySelectorAll("parallax-layer");
+      for (var i = 0; i < layers.length; i++) {
+        if (layers[i].layer) {
+          layers[i]._layerChanged();
+        }
+      }
+    }
+  });
+</script>

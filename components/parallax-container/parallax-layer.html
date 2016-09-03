@@ -1,0 +1,75 @@
+<!--
+@license
+Copyright (c) 2015 Winston Howes. All rights reserved.
+This code may only be used under the MIT license found at https://github.com/winhowes/parallax-container/blob/master/LICENSE
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+A parallax layer. Put content in here to have it placed in a certain plane.
+
+Example:
+
+    <parallax-layer layer="-1"></parallax-layer>
+
+@demo
+-->
+<dom-module id="parallax-layer">
+
+  <style>
+    :host {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      -webkit-transform: translateZ(0) scale(1);
+      transform: translateZ(0) scale(1);
+    }
+  </style>
+
+  <template>
+    <content></content>
+  </template>
+
+</dom-module>
+
+<script>
+  Polymer({
+    is: "parallax-layer",
+    properties: {
+      /**
+       * `layer` determines whether the layer should be in the background
+       * or foreground. Negative numbers are for background, positive for
+       * foreground. Defaults to 0.
+      */
+      layer: {
+        type: Number,
+        notify: true,
+        value: 0
+      }
+    },
+    listeners: {
+      "layer-changed": "_layerChanged"
+    },
+    ready: function() {
+      this._layerChanged()
+    },
+    /**
+     * `_layerChanged` is called to update the css of the layer whenever the
+     * `layer` property is changed.
+    */
+    _layerChanged: function(){
+      var node = this;
+      while(node && node.tagName && node.tagName.toLowerCase() !== "parallax-container" && node.parentNode){
+        node = node.parentNode;
+      }
+      var scale = node.scale;
+      var perspective = node.perspective;
+      layer = this.layer > 0 ? 1 - Math.exp(-this.layer / node.foregroundScale): this.layer;
+      this.style.transform = "translateZ(" + (layer * scale) + "px) scale(" + (1 + (layer * -scale) / perspective) + ")";
+      this.style["-webkit-transform"] = this.style.transform;
+    }
+  });
+</script>

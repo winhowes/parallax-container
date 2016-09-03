@@ -1,0 +1,38 @@
+{
+  "name": "parallax-container",
+  "authors": [
+    "Winston Howes <winstonhowes@gmail.com>"
+  ],
+  "description": "A container for parallax groups and layers.",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "polymer",
+    "parallax"
+  ],
+  "main": "parallax-container.html",
+  "license": "MIT",
+  "homepage": "https://github.com/winhowes/parallax-container/",
+  "ignore": [
+    "/.*",
+    "/test/",
+    "/bower_components"
+  ],
+  "dependencies": {
+    "polymer": "^1.6.1"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.1.7",
+    "web-component-tester": "*"
+  },
+  "_release": "be65b9adf9",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "be65b9adf9de0d5507164bcf17ce41a242288b7c"
+  },
+  "_source": "git://github.com/winhowes/parallax-container.git",
+  "_target": "master",
+  "_originalSource": "winhowes/parallax-container",
+  "_direct": true
+}

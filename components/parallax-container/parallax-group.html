@@ -1,0 +1,64 @@
+<!--
+@license
+Copyright (c) 2015 Winston Howes. All rights reserved.
+This code may only be used under the MIT license found at https://github.com/winhowes/parallax-container/blob/master/LICENSE
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+A group for parallax layers. Grouping layers into sections allows
+you to break the page into distinct sections where different effects
+can be applied.
+
+Example:
+
+    <parallax-group></parallax-group>
+
+@demo
+-->
+<dom-module id="parallax-group">
+
+  <style>
+    :host {
+      display: block;
+      position: relative;
+      height: 100vh;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      z-index: 0;
+    }
+  </style>
+
+  <template>
+    <content></content>
+  </template>
+
+</dom-module>
+
+<script>
+  Polymer({
+    is: "parallax-group",
+    properties: {
+      /**
+       * `z` determines the z-index of the parallax-group.
+      */
+      z: {
+        type: Number,
+        notify: true,
+        value: 0
+      }
+    },
+    listeners: {
+      "z-changed": "_zChanged"
+    },
+    ready: function() {
+      this._zChanged()
+    },
+    /**
+     * `_zChanged` is called whenever the `z` property is changed.
+    */
+    _zChanged: function(){
+      this.style.zIndex = this.z + 1;
+    }
+  });
+</script>
